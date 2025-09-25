@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSE</title>
+</head>
+<body>
+    <div id="sse"></div>
+
+    <script>
+        // let eventSource = new EventSource('/sse/data');
+        let eventSource = new EventSource('/sse/retry');
+        eventSource.onmessage = function(event) {
+            document.getElementById('sse').innerHTML = event.data;
+        }
+    </script>
+</body>
+</html>
