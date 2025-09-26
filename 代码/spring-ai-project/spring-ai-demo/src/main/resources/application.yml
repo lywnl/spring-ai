@@ -5,7 +5,7 @@ spring:
   ai:
     openai:
 #      #gpt
-#      api-key:
+#      api-key: [REDACTED-OPENAI-KEY]
 
       #deepseek
       api-key: [REDACTED-OPENAI-KEY]

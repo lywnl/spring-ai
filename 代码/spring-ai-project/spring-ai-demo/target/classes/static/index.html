@@ -9,10 +9,18 @@
 
     <script>
         // let eventSource = new EventSource('/sse/data');
-        let eventSource = new EventSource('/sse/retry');
+        let eventSource = new EventSource('/sse/stream');
         eventSource.onmessage = function(event) {
             document.getElementById('sse').innerHTML = event.data;
         }
+
+        eventSource.addEventListener('foo', function(event) {
+            document.getElementById('sse').innerHTML = event.data;
+        })
+
+        eventSource.addEventListener('end', function(event) {
+            eventSource.close();
+        })
     </script>
 </body>
 </html>

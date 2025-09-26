@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-ai-demo</module>
+        <module>spring-ollama-demo</module>
+        <module>spring-alibaba-demo</module>
     </modules>
 
     <properties>

@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: spring-alibaba-demo
+
+  ai:
+    dashscope:
+      api-key: [REDACTED-OPENAI-KEY]
+
+#      chat:
+#        options:
+#          model: qwen-vl-max-latest
+#          multi-model: true
