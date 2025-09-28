@@ -3,6 +3,7 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/spring-ai-demo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-alibaba-demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-chat-bot/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ollama-demo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

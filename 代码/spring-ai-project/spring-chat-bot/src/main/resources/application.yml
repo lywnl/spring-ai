@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: spring-chat-bot
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: deepseek-r1:32b
+    openai:
+      api-key: [REDACTED-OPENAI-KEY]
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+          temperature: 0.6
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug

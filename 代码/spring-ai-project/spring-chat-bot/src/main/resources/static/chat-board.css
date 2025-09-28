@@ -1,0 +1,110 @@
+.message-container {
+    margin-bottom: 20px;
+}
+
+.message {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    gap: 12px;
+}
+
+.bot-container .message:last-child {
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url('pic/xz.jpg');
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.content {
+    /*flex: 1;*/
+    width: 100%;
+    padding: 12px;
+    background-color: #f7f7f8;
+    border-radius: 12px;
+    line-height: 1.5;
+    white-space: pre-wrap !important;
+    overflow: hidden !important;
+    max-width: var(--contentWidth);
+}
+
+.user-message .content {
+    width: fit-content;
+    background-color: #333;
+    color: #fff;
+    white-space: pre-wrap !important;
+}
+
+.message.bot-message .content {
+    background-color: #f7f7f8;
+    color: #000;
+    margin-left: 52px;
+    white-space: pre-wrap !important;
+}
+
+.message.thinking-message {
+    margin-left: 0;
+    flex-direction: column;
+}
+
+.message.thinking-message .content {
+    white-space: pre-wrap !important;
+    background-color: #f5f5f7; /* 更柔和的背景色 */
+    color: #4a4a4f; /* 提高文字对比度 */
+    font-style: italic;
+    border-left: 3px solid #7c7c8a; /* 更柔和的边框色 */
+    margin-left: 52px; /* 移除重复属性 */
+    transition: all 0.3s ease-out; /* 简化过渡效果 */
+    overflow: hidden;
+    padding: 12px 15px; /* 增加内边距提高可读性 */
+    border-radius: 0 8px 8px 0; /* 添加圆角增强视觉效果 */
+}
+
+.thinking-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    margin-left: 52px;
+}
+
+.toggle-thinking {
+    cursor: pointer;
+    user-select: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    font-size: 12px;
+}
+
+.thinking-title {
+    color: #666;
+    font-size: 14px;
+}
+
+.message.thinking-message.collapsed .content {
+    display: none;
+}
+
+.message.thinking-message .avatar {
+    margin-bottom: -40px;
+}
+
+textarea:disabled, button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

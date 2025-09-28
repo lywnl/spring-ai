@@ -1,0 +1,8 @@
+com\lyw\chat\bot\model\ChatInfo.class
+com\lyw\chat\bot\SpringChatBotApplication.class
+com\lyw\chat\bot\model\MessageVO.class
+com\lyw\chat\bot\model\MessageVO$1.class
+com\lyw\chat\bot\controller\ChatController.class
+com\lyw\chat\bot\repository\MemoryChatHistoryRepository.class
+com\lyw\chat\bot\repository\ChatHistoryRepository.class
+com\lyw\chat\bot\config\ChatClientConfiguration.class

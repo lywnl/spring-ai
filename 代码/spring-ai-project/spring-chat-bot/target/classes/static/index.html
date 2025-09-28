@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyw Chat Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chat-board.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js"></script>
+    <script type="text/x-mathjax-config">
+        window.MathJax = {
+            tex: {
+              // 行内公式标志
+              inlineMath: [['$', '$']],
+              // 块级公式标志
+              displayMath: [['$$', '$$']],
+              // 下面两个主要是支持渲染某些公式，可以自己了解
+              processEnvironments: true,
+              processRefs: true,
+            },
+            options: {
+              // 跳过渲染的标签
+              skipHtmlTags: ['noscript', 'script', 'span' 'style', 'textarea', 'pre', 'code'],
+              ignoreHtmlClass: 'MathJax_Preview',
+            },
+            startup: {
+              // 当mathjax加载并初始化完成后的回调
+              pageReady: () => {
+                callback && callback()
+              },
+            },
+            svg: {
+              fontCache: 'global',
+            },
+         }
+    </script>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="sidebar">
+<!--            <div class="logo">-->
+<!--                <img src="pic/xz.jpg" alt="Logo" class="logo-img">-->
+<!--            </div>-->
+            <div class="menu-items">
+                <div class="menu-item" id="newChatBtn">
+                    <span class="icon">
+                        <svg t="1751945279481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4610" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M904.2 344.3c-21.5-50.7-52.2-96.3-91.3-135.4s-84.6-69.8-135.4-91.3C625 95.5 569.3 84.2 511.8 84.2S398.5 95.5 346 117.7c-50.7 21.5-96.3 52.2-135.4 91.3s-69.8 84.6-91.3 135.4c-22.2 52.5-33.5 108.3-33.5 165.8S97.1 623.5 119.3 676c21.5 50.7 52.2 96.3 91.3 135.4 39.1 39.1 84.6 69.8 135.4 91.3 52.5 22.2 108.3 33.5 165.8 33.5s113.3-11.3 165.8-33.5c50.7-21.5 96.3-52.2 135.4-91.3 39.1-39.1 69.8-84.6 91.3-135.4 22.2-52.5 33.5-108.3 33.5-165.8s-11.4-113.4-33.6-165.9zM511.8 876C310 876 145.9 711.8 145.9 510.1S310 144.2 511.8 144.2c201.7 0 365.9 164.1 365.9 365.9 0 201.7-164.2 365.9-365.9 365.9z" fill="#666666" p-id="4611"></path><path d="M737 481H542V286c0-16.5-13.5-30-30-30s-30 13.5-30 30v195H287c-16.5 0-30 13.5-30 30s13.5 30 30 30h195v195c0 16.5 13.5 30 30 30s30-13.5 30-30V541h195c16.5 0 30-13.5 30-30s-13.5-30-30-30z" fill="#666666" p-id="4612"></path></svg>
+                    </span>
+                    <span class="text">新建会话</span>
+                    <span class="shortcut">
+                        <span class="key">Ctrl</span>
+                        <span class="key">K</span>
+                    </span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">
+                        <svg t="1751945579803" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1103" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path fill="#666666" d="M727.04 649.0624a31.5392 31.5392 0 0 1-10.5984-1.8432l-228.864-81.664a31.5392 31.5392 0 0 1-20.9408-29.696V352.4608a31.5392 31.5392 0 1 1 63.0784 0v161.1776L737.28 587.8272a31.5392 31.5392 0 0 1-10.5984 61.44z" p-id="1104"></path><path d="M509.8496 95.5904A416.9728 416.9728 0 1 0 926.72 512.5632a417.4336 417.4336 0 0 0-416.8704-416.9728z m0 767.6928a350.72 350.72 0 1 1 350.72-350.72 350.72 350.72 0 0 1-350.72 350.6688z" p-id="1105" fill="#666666"></path></svg>
+                    </span>
+                    <span class="text">历史会话</span>
+                </div>
+                <div class="history-list">
+                    <!-- 会话列表将在这里动态添加 -->
+                </div>
+                <!--<div class="menu-item secondary">
+                    <span class="text">查看全部</span>
+                </div>-->
+            </div>
+            <div class="delete-session">
+                <!--<div class="operate edit">编辑标题</div>-->
+                <div class="operate delete">
+                    <span class="icon">
+                        <svg data-v-e8defdd9="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" name="Delete" class="opt-icon iconify" width="16" height="16" viewBox="0 0 1024 1024"><path d="M352.256 155.648c0-20.48 16.384-36.864 36.864-36.864h245.76c20.48 0 36.864 16.384 36.864 36.864s-16.384 36.864-36.864 36.864H389.12c-20.48 0-36.864-16.384-36.864-36.864zM430.08 684.032c-20.48 0-36.864-16.384-36.864-36.864v-204.8c0-20.48 16.384-36.864 36.864-36.864s36.864 16.384 36.864 36.864v204.8c0 20.48-16.384 36.864-36.864 36.864zM557.056 647.168c0 20.48 16.384 36.864 36.864 36.864s36.864-16.384 36.864-36.864v-204.8c0-20.48-16.384-36.864-36.864-36.864s-36.864 16.384-36.864 36.864v204.8z" fill="currentColor"></path><path d="M880.64 241.664H143.36c-20.48 0-36.864 16.384-36.864 36.864s16.384 36.864 36.864 36.864h49.152l40.96 483.328c4.096 49.152 45.056 90.112 98.304 90.112h364.544c49.152 0 94.208-40.96 98.304-90.112l40.96-483.328H880.64c20.48 0 36.864-16.384 36.864-36.864s-16.384-36.864-36.864-36.864z m-159.744 548.864c0 12.288-12.288 24.576-24.576 24.576h-368.64c-12.288 0-24.576-8.192-24.576-24.576L266.24 315.392h491.52l-36.864 475.136z" fill="currentColor"></path></svg>
+                    </span>
+                    <span class="text">删除</span>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="chat-header">
+                <h1>刘小望</h1>
+            </div>
+            <div class="chat-messages">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be added here -->
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea id="userInput" placeholder="输入你的问题，帮你深度解答"></textarea>
+                    <div class="input-buttons">
+                        <div class="action-buttons">
+                            <!-- <button class="action-btn">🌐</button>
+                            <button class="action-btn">📎</button>
+                            <button class="action-btn">🎯</button> -->
+                            <button class="send-btn">
+                                <svg t="1751947442961" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16165" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200">
+                                    <path d="M541.824 241.28v624.554667a29.781333 29.781333 0 0 1-8.448 21.333333 28.245333 28.245333 0 0 1-21.333333 8.832 28.245333 28.245333 0 0 1-21.333334-8.832 29.781333 29.781333 0 0 1-8.448-21.333333V241.28l-218.325333 243.2a26.026667 26.026667 0 0 1-20.821333 9.344 26.88 26.88 0 0 1-21.333334-9.898667 34.816 34.816 0 0 1-8.448-23.381333c0-8.96 2.986667-16.981333 8.96-23.893333l268.885334-299.306667A26.026667 26.026667 0 0 1 512 128a26.026667 26.026667 0 0 1 20.821333 9.344l268.928 299.306667c5.973333 6.912 8.917333 14.933333 8.917334 23.893333a34.816 34.816 0 0 1-8.448 23.381333 26.368 26.368 0 0 1-20.821334 9.898667 28.544 28.544 0 0 1-21.333333-9.386667l-218.24-243.2z" fill="#ffffff" stroke="#ffffff" stroke-width="7" p-id="16166"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

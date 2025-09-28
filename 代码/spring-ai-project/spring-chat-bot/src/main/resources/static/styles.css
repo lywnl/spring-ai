@@ -1,0 +1,348 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+.mjx-chtml{
+    white-space: normal !important;
+    font-size: 100% !important;
+    span .mjx-char{
+        font-family: KaTeX_Math, "Times New Roman" !important;
+        font-style: italic;
+    }
+    .mjx-char.MJXc-TeX-main-R {
+        font-family: KaTeX_Math, "Times New Roman" !important;
+        font-style: initial;
+    }
+}
+.chat-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f7f7f8;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e5e5e5;
+}
+
+.logo {
+    margin-bottom: 15px;
+}
+
+.logo-img {
+    border-radius: 8px;
+    width: 138px;
+}
+
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s;
+}
+.menu-item#newChatBtn{
+    border: 1px solid rgba(0, 0, 0, .13);
+    background: #ffffff;
+    padding: 5px 8px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: box-shadow .2s ease-in-out, background-color .2s ease-in-out;
+}
+.menu-item#newChatBtn:hover{
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .1);
+}
+.menu-item:hover {
+    background-color: #e5e5e5;
+}
+
+.menu-item .icon {
+    width: fit-content;
+    line-height: 16px;
+    margin-right: 8px;
+}
+.menu-item .icon svg{
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 0;
+}
+.menu-item .text{
+    line-height: 30px;
+}
+.menu-item .shortcut {
+    margin-left: auto;
+    font-size: 12px;
+    color: #666;
+}
+.menu-item .shortcut .key{
+    padding: 0 4px;
+    min-width: 20px;
+    box-sizing: border-box;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .45);
+    background: rgba(0, 0, 0, .05);
+    margin-left: 2px;
+    text-align: center;
+    border-radius: 4px;
+}
+.menu-item.secondary {
+    color: #666;
+    font-size: 14px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.chat-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 20px;
+}
+.chat-messages::-webkit-scrollbar {
+    display: none;
+}
+.chat-messages .bottom-line{
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+}
+.chat-input-container {
+    padding: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.input-wrapper {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 5px 16px -4px rgba(0, 0, 0, .07);
+    transition: 300ms;
+}
+.input-wrapper:has(:focus-within) {
+    border-color: #c5c5c5;
+    box-shadow: 0 5px 16px -4px rgba(0, 0, 0, .15);
+}
+#userInput {
+    width: 100%;
+    min-height: 24px;
+    max-height: 200px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+#userInput::placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.input-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.model-select {
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: 1px solid #e5e5e5;
+    background-color: transparent;
+    color: #666;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-buttons {
+    width: 32px;
+    height: 32px;
+    border-radius: 12px;
+    background-color: rgba(0,0,0,.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 100ms;
+}
+.btn-is-active{
+    background-color: rgba(0,0,0,1);
+}
+.send-btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+.send-btn .icon{
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+/* 历史会话列表样式 */
+.history-list {
+    max-height: calc(100vh - 270px);
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 0 5px;
+}
+
+.history-item {
+    width: 100%;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 4px;
+    transition: background-color 0.2s;
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    .sessionOperates{
+        display: none;
+    }
+}
+.ellipse{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.history-item:hover {
+    background-color: #e5e5e5;
+    .sessionOperates{
+        display: block;
+        font-size: 20px;
+        line-height: 16px;
+        letter-spacing: 1px;
+        margin-left: 10px;
+        padding: 0 3px;
+        border-radius: 4px;
+        color: #999999;
+        cursor: pointer;
+    }
+    .sessionOperates:hover{
+        background-color: #d5d5d5;
+    }
+}
+
+.history-item.active {
+    background-color: rgba(0, 0, 0, .05);
+    color: #000000;
+}
+
+/* 滚动条样式 */
+.history-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/*deleteDia*/
+.delete-session{
+    display: none;
+    position: absolute;
+    top: calc(var(--topP) + 20px);
+    left: calc(var(--leftP) - 120px);
+    z-index: 999;
+    width: 128px;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.delete-session .operate{
+    margin-bottom: 4px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    color: inherit;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    .icon{
+        line-height: 0;
+        margin-right: 8px;
+    }
+    .text{
+        vertical-align: baseline;
+    }
+}
+.delete-session .edit{
+    color: #000000;
+}
+.delete-session .delete{
+    color: #ff3849;
+}
+.delete-session .operate:last-child{
+    margin-bottom: 0;
+}
+.delete-session .operate:hover{
+    background-color: #f0f0f0;
+}

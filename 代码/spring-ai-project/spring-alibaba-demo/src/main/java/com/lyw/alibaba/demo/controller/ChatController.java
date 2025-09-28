@@ -1,5 +1,6 @@
 package com.lyw.alibaba.demo.controller;
 
+import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +12,12 @@ import java.util.List;
 @RequestMapping("/chat")
 public class ChatController {
 
+    @Resource
     private ChatClient chatClient;
 
-    public ChatController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
-    }
+//    public ChatController(ChatClient.Builder chatClientBuilder) {
+//        this.chatClient = chatClientBuilder.build();
+//    }
 
     @RequestMapping("/call")
     public String call(String message) {
@@ -44,5 +46,12 @@ public class ChatController {
 
     }
 
+    @RequestMapping("/word")
+    public String word(String message, String word) {
+         return chatClient.prompt(message)
+                .system(sp -> sp.param("word", word))
+                .call()
+                .content();
+    }
 
 }

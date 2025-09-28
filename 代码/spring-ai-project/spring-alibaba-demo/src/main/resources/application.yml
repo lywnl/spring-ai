@@ -9,7 +9,7 @@ spring:
     dashscope:
       api-key: [REDACTED-OPENAI-KEY]
 
-#      chat:
-#        options:
-#          model: qwen-vl-max-latest
-#          multi-model: true
+      chat:
+        options:
+          model: qwen3-max
+          multi-model: true
