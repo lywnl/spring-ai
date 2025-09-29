@@ -5,10 +5,10 @@ spring:
   ai:
     openai:
 #      #gpt
-#      api-key: [REDACTED-OPENAI-KEY]
+#      api-key: sk-xxx
 
       #deepseek
-      api-key: [REDACTED-OPENAI-KEY]
+      api-key: sk-xxx
       base-url: https://api.deepseek.com
       chat:
         options:

@@ -10,7 +10,7 @@ spring:
       chat:
         model: deepseek-r1:32b
     openai:
-      api-key: [REDACTED-OPENAI-KEY]
+      api-key: sk-xxx
       base-url: https://api.deepseek.com
       chat:
         options:
