@@ -1,0 +1,13 @@
+spring:
+  ai:
+    openai:
+      api-key: ${QIAN_FAN_API_KEY}
+      base-url: https://qianfan.baidubce.com
+      chat:
+        options:
+          model: "ernie-3.5-8k"
+        completions-path: /v2/chat/completions
+      image:
+        options:
+          model: "irag-1.0"
+        imagesPath: /v2/images/generations

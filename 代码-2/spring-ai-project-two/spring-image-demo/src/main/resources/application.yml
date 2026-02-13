@@ -1,4 +1,4 @@
 spring:
   ai:
     openai:
-      api-key: [REDACTED-OPENAI-KEY]
+      api-key: ${OPENAI_API_KEY}
