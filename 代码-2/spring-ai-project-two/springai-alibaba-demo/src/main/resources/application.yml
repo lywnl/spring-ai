@@ -2,3 +2,6 @@ spring:
   ai:
     dashscope:
       api-key: ${DASH_SCOPE_API_KEY}
+#      image:
+#        options:
+#          model: qwen-image-plus
