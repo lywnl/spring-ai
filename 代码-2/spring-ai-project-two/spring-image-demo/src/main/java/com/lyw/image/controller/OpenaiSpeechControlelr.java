@@ -23,7 +23,7 @@ public class OpenaiSpeechControlelr {
     private OpenAiAudioSpeechModel openAiAudioSpeechModel;
 
     @RequestMapping("/tts")
-    public String tts(){
+    public String tts() {
         OpenAiAudioSpeechOptions speechOptions = OpenAiAudioSpeechOptions.builder()
                 .model("tts-1")
                 .voice(OpenAiAudioApi.SpeechRequest.Voice.NOVA)
