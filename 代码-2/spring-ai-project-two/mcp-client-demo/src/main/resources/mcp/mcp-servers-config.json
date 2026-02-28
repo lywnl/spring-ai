@@ -20,6 +20,16 @@
       "env": {
         "BAIDU_MAP_API_KEY": "LF0HuEEnJfTzWIaXIzTcgXbbJg17Xd5I"
       }
+    },
+
+    "user-info": {
+      "command": "java",
+      "args": [
+        "-Dspring.ai.mcp.server.stdio=true",
+        "-Dlogging.pattern.console=",
+        "-jar",
+        "D:\\SpringAI\\spring-ai\\代码-2\\spring-ai-project-two\\mcp-stdio-server-demo\\target\\mcp-stdio-server-demo-1.0-SNAPSHOT.jar"
+      ]
     }
   }
 }

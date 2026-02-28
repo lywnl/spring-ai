@@ -1,0 +1,9 @@
+spring:
+  ai:
+    mcp:
+      server:
+        name: user-info          # MCP Server 名称标识
+        version: 0.0.1           # MCP Server 版本号
+  main:
+    web-application-type: none     # 禁用Web容器(Tomcat)
+    banner-mode: off               # 关闭Spring Boot启动横幅
