@@ -20,6 +20,8 @@
         <module>spring-image-demo</module>
         <module>spring-qianfan-demo</module>
         <module>springai-alibaba-demo</module>
+        <module>mcp-client-demo</module>
+        <module>mcp-stdio-server-demo</module>
     </modules>
 
     <properties>

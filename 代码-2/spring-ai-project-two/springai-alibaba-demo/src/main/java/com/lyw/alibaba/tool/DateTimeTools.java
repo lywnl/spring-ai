@@ -9,7 +9,7 @@ public class DateTimeTools {
 
     @Tool(description = "A tool to get the current date and time")
     public String getCurrentDateTime(ToolContext context) {
-        System.out.println(context.getContext().get("userID"));
+        System.out.println("userID: " + context.getContext().get("userID"));
         return LocalDateTime.now().atZone(java.time.ZoneId.systemDefault()).toString();
     }
 

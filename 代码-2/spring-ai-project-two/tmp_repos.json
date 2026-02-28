@@ -1,0 +1,37 @@
+﻿[
+    {
+        "name":  "30-seconds-of-code",
+        "full_name":  "Chalarangelo/30-seconds-of-code",
+        "html_url":  "https://github.com/Chalarangelo/30-seconds-of-code",
+        "stargazers_count":  126880,
+        "description":  "Coding articles to level up your development skills"
+    },
+    {
+        "name":  "app-ideas",
+        "full_name":  "florinpop17/app-ideas",
+        "html_url":  "https://github.com/florinpop17/app-ideas",
+        "stargazers_count":  90767,
+        "description":  "A Collection of application ideas which can be used to improve your coding skills."
+    },
+    {
+        "name":  "skills",
+        "full_name":  "anthropics/skills",
+        "html_url":  "https://github.com/anthropics/skills",
+        "stargazers_count":  77861,
+        "description":  "Public repository for Agent Skills"
+    },
+    {
+        "name":  "superpowers",
+        "full_name":  "obra/superpowers",
+        "html_url":  "https://github.com/obra/superpowers",
+        "stargazers_count":  63891,
+        "description":  "An agentic skills framework \u0026 software development methodology that works."
+    },
+    {
+        "name":  "everything-claude-code",
+        "full_name":  "affaan-m/everything-claude-code",
+        "html_url":  "https://github.com/affaan-m/everything-claude-code",
+        "stargazers_count":  53674,
+        "description":  "Complete Claude Code configuration collection - agents, skills, hooks, commands, rules, MCPs. Battle-tested configs from an Anthropic hackathon winner."
+    }
+]
