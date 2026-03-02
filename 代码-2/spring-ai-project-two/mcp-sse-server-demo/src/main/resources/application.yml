@@ -1,0 +1,9 @@
+server:
+  port: 9090
+
+spring:
+  ai:
+    mcp:
+      server:
+        name: user-info          # MCP Server 名称标识
+        version: 0.0.1           # MCP Server 版本号

@@ -5,5 +5,9 @@ spring:
     mcp:
       client:
         request-timeout: 60000
-        stdio:
-          servers-configuration: classpath:/mcp/mcp-servers-config.json
+#        stdio:
+#          servers-configuration: classpath:/mcp/mcp-servers-config.json
+        sse:
+          connections:
+            user-info:
+              url: http://127.0.0.1:9090/sse
