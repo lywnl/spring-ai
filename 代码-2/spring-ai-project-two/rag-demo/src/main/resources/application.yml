@@ -1,4 +1,8 @@
 spring:
   ai:
-    openai:
-      api-key: ${OPEN_AI_API_KEY}
+    dashscope:
+      api-key: ${DASH_SCOPE_API_KEY}
+      embedding:
+        options:
+          model: text-embedding-v1
+          dimensions: 512

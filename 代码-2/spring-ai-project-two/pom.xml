@@ -23,6 +23,7 @@
         <module>mcp-client-demo</module>
         <module>mcp-stdio-server-demo</module>
         <module>mcp-sse-server-demo</module>
+        <module>rag-demo</module>
     </modules>
 
     <properties>
