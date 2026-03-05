@@ -7,6 +7,8 @@ import org.springframework.ai.reader.JsonReader;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.reader.jsoup.JsoupDocumentReader;
 import org.springframework.ai.reader.jsoup.config.JsoupDocumentReaderConfig;
+import org.springframework.ai.reader.markdown.MarkdownDocumentReader;
+import org.springframework.ai.reader.markdown.config.MarkdownDocumentReaderConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -110,6 +112,25 @@ public class ReadTest {
         JsoupDocumentReader jsoupDocumentReader = new JsoupDocumentReader("classpath:/file/my-page.html", config);
         List<Document> documents = jsoupDocumentReader.get();
         System.out.println("documents size: " + documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
+
+    @Test
+    void testReadMarkdown() {
+        MarkdownDocumentReaderConfig config =
+                MarkdownDocumentReaderConfig.builder()
+                        .withHorizontalRuleCreateDocument(true)
+                        .withIncludeCodeBlock(false)
+                        .withIncludeBlockquote(false)
+                        .withAdditionalMetadata("filename", "code.md")
+                        .build();
+
+        MarkdownDocumentReader reader = new MarkdownDocumentReader("classpath:/file/code.md", config);
+        List<Document> documents = reader.get();
+        System.out.printf("documents: %d\n", documents.size());
         for (Document document : documents) {
             System.out.println(document.getText());
             System.out.println(document.getMetadata());
