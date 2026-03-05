@@ -13,6 +13,7 @@ import org.springframework.ai.reader.markdown.config.MarkdownDocumentReaderConfi
 import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
 import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
 import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
+import org.springframework.ai.reader.tika.TikaDocumentReader;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -179,6 +180,36 @@ public class ReadTest {
         }
     }
 
+    @Test
+    void tikaReaderTest(@Value("classpath:/file/tika.docx")Resource resource) {
+        TikaDocumentReader reader = new TikaDocumentReader(resource);
+        List<Document> documents = reader.get();
+        System.out.println("documents size: " + documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
 
+    @Test
+    void tikaReaderTest2(@Value("classpath:/file/ppt-sample.pptx")Resource resource) {
+        TikaDocumentReader reader = new TikaDocumentReader(resource);
+        List<Document> documents = reader.get();
+        System.out.println("documents size: " + documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
 
+    @Test
+    void tikaReaderTest3(@Value("classpath:/file/sample1.pdf")Resource resource) {
+        TikaDocumentReader reader = new TikaDocumentReader(resource);
+        List<Document> documents = reader.get();
+        System.out.println("documents size: " + documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
 }
