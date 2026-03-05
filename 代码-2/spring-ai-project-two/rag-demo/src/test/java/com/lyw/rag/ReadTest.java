@@ -3,12 +3,16 @@ package com.lyw.rag;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.reader.ExtractedTextFormatter;
 import org.springframework.ai.reader.JsonReader;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.reader.jsoup.JsoupDocumentReader;
 import org.springframework.ai.reader.jsoup.config.JsoupDocumentReaderConfig;
 import org.springframework.ai.reader.markdown.MarkdownDocumentReader;
 import org.springframework.ai.reader.markdown.config.MarkdownDocumentReaderConfig;
+import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
+import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
+import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -119,7 +123,7 @@ public class ReadTest {
     }
 
     @Test
-    void testReadMarkdown() {
+    void markdownReaderTest() {
         MarkdownDocumentReaderConfig config =
                 MarkdownDocumentReaderConfig.builder()
                         .withHorizontalRuleCreateDocument(true)
@@ -136,5 +140,45 @@ public class ReadTest {
             System.out.println(document.getMetadata());
         }
     }
+
+    @Test
+    void pdfReaderTest() {
+        PagePdfDocumentReader reader = new PagePdfDocumentReader("classpath:/file/sample1.pdf",
+                PdfDocumentReaderConfig.builder()
+                        .withPageTopMargin(0)
+                        .withPageExtractedTextFormatter(ExtractedTextFormatter.builder()
+                                .withNumberOfTopTextLinesToDelete(0)
+                                .build())
+                        .withPagesPerDocument(1)
+                        .build());
+
+        List<Document> documents = reader.get();
+        System.out.println("documents size: " + documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
+
+    @Test
+    void pdfReaderTest2() {
+        ParagraphPdfDocumentReader reader = new ParagraphPdfDocumentReader("classpath:/file/sample1.pdf",
+                PdfDocumentReaderConfig.builder()
+                        .withPageTopMargin(0)
+                        .withPageExtractedTextFormatter(ExtractedTextFormatter.builder()
+                                .withNumberOfTopTextLinesToDelete(0)
+                                .build())
+                        .withPagesPerDocument(1)
+                        .build());
+
+        List<Document> documents = reader.get();
+        System.out.println("documents size: " + documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
+
+
 
 }
