@@ -1,6 +1,8 @@
 package com.lyw.rag;
 
 
+import com.alibaba.cloud.ai.reader.mysql.MySQLDocumentReader;
+import com.alibaba.cloud.ai.reader.mysql.MySQLResource;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.ExtractedTextFormatter;
@@ -212,4 +214,21 @@ public class ReadTest {
             System.out.println(document.getMetadata());
         }
     }
+
+    @Test
+    void testReadMysql() {
+        String query = "SELECT * FROM user LIMIT 10;";
+        List<String> columns = List.of("Host", "User", "Select_priv");
+        MySQLResource mysqlResource = new MySQLResource("127.0.0.1", 3306,"mysql","root", "liuyvanwang", query, columns, columns);
+
+        MySQLDocumentReader reader = new MySQLDocumentReader(mysqlResource);
+        List<Document> documents = reader.get();
+        System.out.printf("documents: %d\n", documents.size());
+        for (Document document : documents) {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        }
+    }
+
+
 }
