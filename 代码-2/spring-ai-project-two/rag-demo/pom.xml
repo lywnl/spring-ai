@@ -75,6 +75,11 @@
             <groupId>com.alibaba.cloud.ai</groupId>
             <artifactId>spring-ai-alibaba-starter-document-reader-mysql</artifactId>
         </dependency>
+        <!-- Redis向量数据库 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-vector-store-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
