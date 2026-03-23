@@ -5,15 +5,18 @@ import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SearchRequest;
+import org.springframework.ai.vectorstore.pinecone.autoconfigure.PineconeVectorStoreAutoConfiguration;
 import org.springframework.ai.vectorstore.redis.RedisVectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 
 import java.util.List;
 
 @SpringBootTest
+@EnableAutoConfiguration(exclude = PineconeVectorStoreAutoConfiguration.class)
 public class RedisVectorStoreTest {
 
     @Autowired
@@ -33,13 +36,12 @@ public class RedisVectorStoreTest {
         redisVectorStore.add(splitterDoc);
         System.out.println("向量存储加载文档完成");
 
-//        //相似性检索
-//        SearchRequest searchRequest = SearchRequest.builder()
-//                .query("大语言模型") //查询的文本
-//                .topK(5) //匹配文档的前N个
-//                .similarityThreshold(0.6) //相似度分数大于等于0.5
-//                .build();
-//        List<Document> searchResults = redisVectorStore.similaritySearch(searchRequest);
-//        searchResults.forEach(System.out::println);
+        //相似性检索
+        SearchRequest searchRequest = SearchRequest.builder()
+                .query("会员") //查询的文本
+                .topK(2) //匹配文档的前N个
+                .build();
+        List<Document> searchResults = redisVectorStore.similaritySearch(searchRequest);
+        searchResults.forEach(System.out::println);
     }
 }

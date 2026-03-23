@@ -4,13 +4,16 @@ spring:
       api-key: ${DASH_SCOPE_API_KEY}
       embedding:
         options:
-          model: text-embedding-v1   #配置向量模型
+          model: text-embedding-v4   #配置向量模型
 
     vectorstore:
       redis:
         initialize-schema: true    # 是否自动创建索引结构
         index-name: spring-ai-index # 向量索引名称
         prefix: "embedding:"        # Redis Key 前缀
+#      pinecone:
+#        api-key: ${PINECONE_API_KEY}
+#        index-name: pinecone-index #上面创建的索引名称
   data:
     redis:
       url: redis://43.138.69.10:6579
