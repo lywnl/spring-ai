@@ -44,4 +44,6 @@ public class PineconeVectorStoreTest {
         searchResults.forEach(System.out::println);
         System.out.println("相似性检索完成");
     }
+
+
 }
