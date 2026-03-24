@@ -24,6 +24,7 @@
         <module>mcp-stdio-server-demo</module>
         <module>mcp-sse-server-demo</module>
         <module>rag-demo</module>
+        <module>agents-demo</module>
     </modules>
 
     <properties>
