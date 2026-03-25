@@ -1,9 +1,6 @@
 package com.lyw.agents.config;
 
-import com.lyw.agents.ChainWorkflow;
-import com.lyw.agents.OrchestratorWorkers;
-import com.lyw.agents.ParallelizationWorkflow;
-import com.lyw.agents.RoutingWorkflow;
+import com.lyw.agents.*;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -102,21 +99,33 @@ public class AgentConfig {
 //    }
 
 
+//    @Bean
+//    public CommandLineRunner commandLineRunner(ChatClient.Builder chatClientBuilder) {
+//        var chatClient = chatClientBuilder.build();
+//        return args -> {
+//
+//            OrchestratorWorkers.FinalResponse response = new OrchestratorWorkers(chatClient)
+//                    .process("为一款新型环保可重复使用的保温杯撰写产品介绍文案");
+//            // 打印最终结果
+//            System.out.println("\n\n最终聚合结果：\n");
+//            for (int i = 0; i < response.workerResponses().size(); i++) {
+//                String style = response.workerResponses().get(i).startsWith("【专业版】") ? "专业" : "亲民";
+//                System.out.println(" [" + style + "风格] 输出：\n" + response.workerResponses().get(i) + "\n");
+//            }
+//        };
+//    }
+
     @Bean
     public CommandLineRunner commandLineRunner(ChatClient.Builder chatClientBuilder) {
         var chatClient = chatClientBuilder.build();
         return args -> {
+            EvaluatorOptimizer.RefinedResponse refinedResponse = new EvaluatorOptimizer(chatClient).loop("""
+               我正在找一份专业相关的实习工作, 需要每周去公司3天. 
+               如何写一段话, 向辅导员说明情况, 并申请办理实习手续? 
+               希望表达出我对学业的重视, 同时说明实习对未来就业的重要性. 
+               """);
 
-            OrchestratorWorkers.FinalResponse response = new OrchestratorWorkers(chatClient)
-                    .process("为一款新型环保可重复使用的保温杯撰写产品介绍文案");
-            // 打印最终结果
-            System.out.println("\n\n最终聚合结果：\n");
-            for (int i = 0; i < response.workerResponses().size(); i++) {
-                String style = response.workerResponses().get(i).startsWith("【专业版】") ? "专业" : "亲民";
-                System.out.println(" [" + style + "风格] 输出：\n" + response.workerResponses().get(i) + "\n");
-            }
+            System.out.println("FINAL OUTPUT:\n : " + refinedResponse);
         };
     }
-
-
 }
